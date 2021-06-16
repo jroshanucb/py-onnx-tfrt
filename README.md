@@ -34,19 +34,13 @@ copy the onnx file into this container by mounting the local filesystem
 Run the cell with this code
 
 `print('Converting to TF-TRT FP32...')
-
 max = 3000000000
-
 _conversion_params = trt.DEFAULT_TRT_CONVERSION_PARAMS._replace(precision_mode=trt.TrtPrecisionMode.FP32,
                                                                max_workspace_size_bytes=max)
-
 converter = trt.TrtGraphConverterV2(input_saved_model_dir='resnet50_saved_model',
                                     conversion_params=conversion_params)
-
 converter.convert()
-
 converter.save(output_saved_model_dir='resnet50_saved_model_TFTRT_FP32')
-
 print('Done Converting to TF-TRT FP32')`
 
 ## Load the onnx model into tf-trt
